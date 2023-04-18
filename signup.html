@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign In</title>
+        <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    </head>
+    <body>
+        <marquee behavior="" direction=""><h1>school Portal</h1></marquee>
+        <!-- <div class="text-center fs-2 fw-bold">Create New Accout</div> -->
+        <div class=" mx-3">
+            <input type="text" placeholder="first name" id="fn" class="form-control fs-5 p-2 ">
+            <input type="text" placeholder="Last name" id="ln" class="form-control fs-5 p-2 my-2">
+            <input type="email" placeholder="E-mail" id="em" class="form-control fs-5 p-2 ">
+            <input type="text" placeholder="password" id="ps" class="form-control fs-5 p-2 my-2">
+            <button onclick="Register()" class="btn btn-info fw-bold fs-5 w-100">Sign up</button>
+
+        </div>
+        <script>
+            var allstudent = []
+            if (localStorage.schoolportal) {
+                allstudent = JSON.parse(localStorage.getItem("schoolportal")) 
+                
+            }
+            console.log(allstudent);
+            function Register() {
+                var student = {
+                    firstname : fn.value,
+                    lastname : ln.value,
+                    email : em.value,
+                    password : ps.value,
+                }
+                allstudent.push(student);
+                localStorage.setItem("schoolportal",JSON.stringify(allstudent) )
+                window.location.href = "signin.html"
+                console.log(allstudent);
+                
+                fn.value = ""
+                ln.value = ""
+                em.value = ""
+                ps.value = ""
+            }
+        </script>
+    </body>
+</html>

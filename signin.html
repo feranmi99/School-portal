@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    </head>
+    <body>
+        <div class="mx-3">
+
+            <h1 class="text-center fw-bold my-4">Sign in</h1>
+            <input type="email" placeholder="Enter Your E-mail" id="mail" class="form-control fw-bold">
+            <input type="text" placeholder="password" id="pass" class="form-control fs-5 fw-bold my-3">
+            <button onclick="signin()" class="btn w-100 fs-3 fw-bold btn-info">Sign in</button>
+        </div>
+
+        <script>
+            var allstudent = JSON.parse(localStorage.getItem("schoolportal"))
+            console.log(allstudent);
+            var userfound = false
+            function signin() {
+                for (let index = 0; index < allstudent.length; index++) {
+                    console.log(index);
+                    if (mail.value==allstudent[index].email && pass.value==allstudent[index].password) {
+                        console.log(index);
+                        localStorage.setItem("userindex",index)
+                        userfound = true
+                        break;
+                    }
+                    // console.log(mail.value,pass.value);
+                    
+                }
+                if (userfound==true) {
+                    // alert("Welcome User Found ooo")
+                    window.location.href = "dashborad.html"
+                } else {
+                    alert("User not Found Try Again")
+                    
+                }
+            }
+        </script>
+    </body>
+</html>

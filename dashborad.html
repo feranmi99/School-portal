@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+        <script src="./bootstrap-5.3.0-alpha1-dist/bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
+    </head>
+    <body>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="First name" class="form-control p-2" id="one">
+                    <input type="text" placeholder="Last name" class="form-control my-2 p-2" id="two">
+                    <input type="text" placeholder="E-mail" class="form-control p-2" id="three">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="update()" data-bs-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+
+        <h1 class="text-center my-4 fw-bold">Welcome To The Dashboard</h1>
+        <table  class="table">
+            <tr>
+                <td class="fs-1">S/N</td>
+                <td class="fs-1">Fisst Name</td>
+                <td class="fs-1">Last Name</td>
+                <td class="fs-1">E-mail</td>
+                <td class="fs-1">Action</td>
+            </tr>
+            <tbody id="display">
+
+            </tbody>
+        </table>
+        <script>
+            // var allstudent = JSON.parse(localStorage.getItem)
+            let localStorageData = JSON.parse(localStorage.getItem("schoolportal")) 
+            console.log(localStorageData);
+            document.getElementById("display").innerHTML +=
+            
+            localStorageData.map((value, index) => (
+                `
+                <tr>
+                    <td class="fs-3">${index + 1}.</td>
+                    <td class="fs-4">${value.firstname}</td>
+                    <td class="fs-4">${value.lastname}</td>
+                    <td class="fs-4">${value.email}</td>
+                    <td class="fs-4">
+                        <button onclick="Delete(${index})" class="btn btn-danger">Delete</button>
+                        <button onclick="Edit(${index})" class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
+                    </td>
+                </tr>
+                ` 
+            ))
+            function Delete(e) {
+                let newStudents = localStorageData.splice(e,1)
+                console.log(localStorageData);
+                localStorage.setItem("schoolportal",JSON.stringify(localStorageData) );
+                localStorageData = JSON.parse(localStorage.getItem("schoolportal"))
+                location.reload();
+                // displayitem()
+            }
+            
+            // let edIndex = ''
+            // function Edit(e) {
+            //     edIndex = e
+            //     // localStorage.setItem("schoolportal",JSON.stringify(localStorageData) );
+            //     localStorageData = JSON.parse(localStorage.getItem("schoolportal"))
+            //     console.log(localStorageData);
+            //     // one.value = localStorage.getItem("")
+            //     // two.value = alluser[e].price
+            //     // three.value = alluser[e].quantity
+            //     // console.log(alluser[e]);
+            //     var newdetail = {
+            //         name: one.value,
+            //         Price: two.value,
+            //         Quntiyt: three.value,
+            //     } 
+            //     localStorageData.splice(e,1,newdetail)
+            //     // displayitem()
+            //     console.log(localStorageData);
+            // }
+            // function update() {
+            //     edName = one.value;
+            //     edPrice = two.value;
+            //     edQuantity = three.value;
+            //     let newObj = {
+            //         name:edName,
+            //         price:edPrice,
+            //         Quntiyt:edQuantity}
+            //     console.log(newObj);
+            //     localStorageData[edIndex] = newObj;
+            //     // displayitem();
+            // }
+        </script>
+    </body>
+</html>
