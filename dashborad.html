@@ -34,11 +34,11 @@
         <h1 class="text-center my-4 fw-bold">Welcome To The Dashboard</h1>
         <table  class="table">
             <tr>
-                <td class="fs-1">S/N</td>
-                <td class="fs-1">Fisst Name</td>
-                <td class="fs-1">Last Name</td>
-                <td class="fs-1">E-mail</td>
-                <td class="fs-1">Action</td>
+                <td class="">S/N</td>
+                <td class="">Fisst Name</td>
+                <td class="">Last Name</td>
+                <td class="">E-mail</td>
+                <td class="">Action</td>
             </tr>
             <tbody id="display">
 
@@ -53,11 +53,11 @@
             localStorageData.map((value, index) => (
                 `
                 <tr>
-                    <td class="fs-3">${index + 1}.</td>
-                    <td class="fs-4">${value.firstname}</td>
-                    <td class="fs-4">${value.lastname}</td>
-                    <td class="fs-4">${value.email}</td>
-                    <td class="fs-4">
+                    <td class="">${index + 1}.</td>
+                    <td class="">${value.firstname}</td>
+                    <td class="">${value.lastname}</td>
+                    <td class="">${value.email}</td>
+                    <td class="">
                         <button onclick="Delete(${index})" class="btn btn-danger">Delete</button>
                         <button onclick="Edit(${index})" class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                     </td>
